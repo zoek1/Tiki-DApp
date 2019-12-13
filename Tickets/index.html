@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Tickets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.11/dist/summernote-bs4.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!--script src="https://code.jquery.com/jquery-1.12.0.min.js"></script-->
+    <!--script src="https://www.google.com/recaptcha/api.js"></script-->
+    
+</head>
+ 
+<body>
+    <div class="container">
+      <!-- MultiStep Form -->
+      <div class="row">
+	<div class="col-sm-12 col-md-12 col-md-offset-3">
+	  <form id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+		<li></li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset id="basic">
+                <h2 class="fs-title">Paso 1</h2>
+                <h3 class="fs-subtitle">Título *</h3>
+                <input type="text" name="tname" id="title" placeholder="Name"/>
+		<h3 class="fs-subtitle">Descripción *</h3>
+		<textarea name="Editor" id="description" ></textarea>
+		<p class="p-subtitle">Categoría: *  
+		<select name="categoria" id="options1">
+		  <option value="" >- Selecciona una opción -</option>
+		  <option value="1">Uno</option>
+		  <option value="2">Dos</option>
+		  <option value="3">Tres</option>
+		</select>
+		</p>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset id="time">
+                <h2 class="fs-title">Paso 2</h2>
+                <h3 class="fs-subtitle">Inicio *</h3>
+		<input type="date" name="idate" id="idate">
+		<h3 class="fs-subtitle">Hora *</h3>
+		<input type="time" name="ihora" id="ihora">
+		<h3 class="fs-subtitle">Fin *</h3>
+		<input type="date" name="fdate" id="fdate">
+		<h3 class="fs-subtitle">Hora *</h3>
+		<input type="time" name="fhora" id="fhora">
+		<h3 class="fs-subtitle">Direccion</h3>
+		<input type="text" id="search_location" name="address" placeholder="Address"/>
+		<!-- display google map--> 
+		<div id="geomap"></div>			  	
+		
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+	    <fieldset id="ticket">
+	      <h2 class="fs-title">Paso 3</h2>
+                <h3 class="fs-subtitle">Nombre del ticket *</h3>
+		<input type="text" name="nticket" placeholder="Name" id="nticket"/>
+		<h3 class="fs-subtitle">Existencia *</h3>
+		<input type="number" name="existencia" id="existencia"/>
+		<h3 class="fs-subtitle">Costo *</h3>
+		<input type="text" name="costo" placeholder="100" id="costo"/>
+		<select name="moneda" id="options2">
+		  <option value="" >- Selecciona una opción -</option>
+		  <option value="eth">ETH</option>
+		  <option value="dai">DAI</option>
+		  <option value="mkr">MKR</option>
+		</select>
+		<br>
+	        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+	    <fieldset id="social">
+                <h2 class="fs-title">Paso 4</h2>
+                <h3 class="fs-subtitle">Banner</h3>
+		<input type="file" name="archivo" placeholder="Banner"/>
+                <h3 class="fs-subtitle">Site</h3>
+		<input type="text" name="site" placeholder="www.site.com"/>
+                <h3 class="fs-subtitle">Instagram</h3>
+		<input type="text" name="instagram" placeholder="/instagram"/>
+                <h3 class="fs-subtitle">Facebook</h3>
+		<input type="text" name="facebook" placeholder="/facebook"/>
+                <h3 class="fs-subtitle">Twitter</h3>
+		<input type="text" name="twitter" placeholder="@twitter"/>
+		
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+            </fieldset>
+	    
+        </form>
+    </div>
+</div>      
+  
+</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs4-summernote@0.8.10/dist/summernote-bs4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMZqIDhm9Bgh3RH9lFKSOJaDYCG6KLoeo"></script>
+    <script src="script.js" type="text/javascript" ></script>
+
+</html>
