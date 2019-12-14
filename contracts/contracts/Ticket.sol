@@ -19,9 +19,11 @@ contract TicketToken is ERC721, Ownable {
         string location;
         uint assistance;
         bool active;
+        address payable owner;
     }
     
     enum Status {
+        NONE,
         INITIAL,
         VALIDATED,
         FROOZEN,
@@ -32,6 +34,7 @@ contract TicketToken is ERC721, Ownable {
         address owner;
         uint eventId;
         Status status;
+        
     }
     
     Event[] public events;
@@ -42,10 +45,11 @@ contract TicketToken is ERC721, Ownable {
     
     event EventAdded(uint id,  address owner);
     event TicketIssued(uint id, uint eventId,  address buyer);
-    event TransferedTicket(uint id, address sender, address beneficiary);
+    event TicketValidated(uint id, uint eventId,  address requester);
+    event TransferedTicket(uint eventId, uint ticketId, address beneficiary);
     
     
-    function createEvent(
+    function createEvent (
         string memory _title,
         string memory  _description,
         uint _amount,
@@ -53,7 +57,7 @@ contract TicketToken is ERC721, Ownable {
         uint _existence,
         uint _start,
         uint _finish,
-        string memory _location) public {
+        string memory _location) public returns (uint eventId) {
 
         // validate if event is in validate range date
         require(_start > block.timestamp, "The initial date is invalid");
@@ -68,9 +72,11 @@ contract TicketToken is ERC721, Ownable {
             finish: _finish,
             location: _location,
             assistance: 0,
-            active: true
+            active: true,
+            owner: msg.sender
         });
-        uint eventId = events.push(localEvent) - 1;
+        
+        eventId = events.push(localEvent) - 1;
         
         emit EventAdded(eventId, msg.sender);
         
@@ -78,7 +84,7 @@ contract TicketToken is ERC721, Ownable {
     
     
 
-    function mint(uint _event) public payable {
+    function mint(uint _event) public payable returns (uint ticketId) {
         Event storage current_event = events[_event];
         
         // validate event id exists
@@ -96,11 +102,21 @@ contract TicketToken is ERC721, Ownable {
         require(earned[_event][msg.sender] == 0, 'You already has a ticket fot this event');
         
         Ticket memory issue = Ticket({owner: msg.sender, eventId: _event, status: Status.INITIAL });
-        uint ticketId = tickets.push(issue) - 1;
+        ticketId = tickets.push(issue) - 1;
         coinbalance[_event] == msg.value;
         earned[_event][msg.sender] = ticketId;
         current_event.assistance = current_event.assistance + 1;
         emit TicketIssued(ticketId, _event, msg.sender);
         _mint(msg.sender, ticketId);
+    }
+    
+    function validate(uint _ticket) public {
+        Ticket storage current = tickets[_ticket];
+        require(current.status == Status.INITIAL, "Ticket couldn't be redeemed");
+        
+        require(msg.sender == current.owner, "Only the owner can validate this ticket");
+        current.status = Status.VALIDATED;
+        
+        emit TransferedTicket(current.eventId, _ticket, msg.sender);
     }
 }
