@@ -7,11 +7,6 @@ h3{
   font-size: 1rem;
   color: #fff;
 }
-
-h3{
-  font-size: 1rem;
-}
-
 .jumbotron{
   width: 100%;
   height: 300px;
@@ -22,6 +17,10 @@ h3{
   margin-bottom: 0;
 }
 
+.nav-tabs{
+  margin: 20px 0;
+}
+
 .navbar-nav{
   flex-direction: row;
   justify-content: space-between;
@@ -30,16 +29,5 @@ h3{
 
 .price{
   margin-top: 20px;
-}
-
-footer{
-  width: 1000px;
-  height: 50px;
-  float: left;
-
-}
-footer ul{
-  margin-left: 30px;
-  list-style-type: none;
 }
 
