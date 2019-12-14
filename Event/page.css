@@ -31,3 +31,9 @@ h3{
   margin-top: 20px;
 }
 
+.social {
+  display: inline-block;
+  padding: 20px 0;
+  width: 100%;
+}
+
