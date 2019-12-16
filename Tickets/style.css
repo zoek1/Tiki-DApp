@@ -206,3 +206,8 @@ body {
     background: #C5C5F1;
     text-decoration: none;
 }
+
+
+.note-toolbar {
+    z-index: 1 !important;
+}

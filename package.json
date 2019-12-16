@@ -1,0 +1,29 @@
+{
+    "name": "Ticky-Dapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "scripts": {
+        "build": "webpack -w --hot --mode=development",
+        "start": "webpack-dev-server"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.0.0-beta.42",
+        "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.42",
+        "@babel/preset-env": "^7.0.0-beta.42",
+        "babel-loader": "^8.0.0-beta.2",
+        "webpack": "^4.2.0",
+        "webpack-cli": "^3.1.1",
+        "webpack-dev-server": "^3.9.0"
+    },
+    "dependencies": {
+        "3box": "^1.15.0",
+        "@walletconnect/browser": "^1.0.0-beta.39",
+        "@walletconnect/qrcode-modal": "^1.0.0-beta.39",
+        "@walletconnect/web3-subprovider": "^1.0.0-beta.39",
+        "web3": "^1.2.4"
+    }
+}
