@@ -1,0 +1,12 @@
+.fa.fa-check-circle.check{
+	color: #19a101;
+}
+
+.fa.fa-times-circle.uncheck{
+	color: #9c0700;
+}
+
+h2{
+	font-size: 1rem;
+	margin: 1rem;
+}
