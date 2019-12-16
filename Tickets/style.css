@@ -20,6 +20,9 @@ h2{
 	font-size: 1rem;
 }
 
+a.usuario{
+	padding: 1rem;
+}
 /*form styles*/
 #msform {
     text-align: center;
